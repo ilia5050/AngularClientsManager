@@ -11,19 +11,15 @@ import { AccountModel } from 'src/app/models/account.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClientsDetailComponent implements OnInit {
-
   client = new ClientModel();
-
   accounts: AccountModel[] = [];
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.client = this.activatedRoute.snapshot.data['data'][0]
-
+    this.client = this.activatedRoute.snapshot.data['data'][0];
     this.accounts = this.activatedRoute.snapshot.data['accounts'];
-
   }
 
 
