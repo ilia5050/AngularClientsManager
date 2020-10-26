@@ -1,0 +1,197 @@
+<ng-template #createClientmodal let-modal>
+    <ng-container >
+        <form [formGroup]="form" (ngSubmit)="(!editMode) ? addClientRequest() : editClientRequest()">
+            <div class="modal-header">
+                <p class="modal-title d-flex" id="modal-basic-title">
+                    <i class="pe-7s-close-circle mr-2" style="font-size: 21px;"> </i> 
+                    {{ (!editMode) ? 'კლიენტის დამატება' : 'კლიენტის რედაქტირება' }} 
+                </p>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">  
+
+                <p *ngIf="clientCreateSuccessfullyStatus && !editMode" class="text-success text-center mt-2">
+                    <b>კლიენტი წარმატებით დაემატა</b>
+                </p>
+
+                <p *ngIf="clientCreateSuccessfullyStatus && editMode" class="text-success text-center mt-2">
+                    <b>კლიენტი წარმატებით განახლდა</b>
+                </p>
+                                
+                <div class="row pl-3 pr-3" *ngIf="!clientCreateSuccessfullyStatus">
+                                        
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label>სახელი</label>
+                            <input type="text" formControlName="firstName" class="form-control"/>
+                            <div *ngIf="form.get('firstName').hasError('required') && (form.get('firstName').dirty || form.get('firstName').touched)" class="text-danger">
+                               {{ 'message@error@clients@create-client-modal@input-name' | MessageGenerator }}
+                            </div>
+                            <div *ngIf="form.get('firstName').hasError('minlength') && (form.get('firstName').dirty || form.get('firstName').touched)" class="text-danger">
+                                {{ 'message@error@clients@create-client-modal@name-min-3' | MessageGenerator }}
+                            </div>
+                            <div *ngIf="form.get('firstName').hasError('minlength') && (form.get('firstName').dirty || form.get('firstName').touched)" class="text-danger">
+                                {{ 'message@error@clients@create-client-modal@name-max-50' | MessageGenerator }}
+                            </div>
+                            <div *ngIf="form.get('firstName').hasError('onlylatinAndGeorgian') && (form.get('firstName').dirty || form.get('firstName').touched)" class="text-danger">
+                                {{ 'message@error@clients@create-client-modal@onlylathinorgeorgian' | MessageGenerator }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label>გვარი</label>
+                            <input type="text" formControlName="lastName" class="form-control"/>
+                            <div *ngIf="form.get('lastName').hasError('required') && (form.get('lastName').dirty || form.get('lastName').touched)" class="text-danger">
+                               {{ 'message@error@clients@create-client-modal@input-lastname' | MessageGenerator }}
+                            </div>
+                            <div *ngIf="form.get('lastName').hasError('minlength') && (form.get('lastName').dirty || form.get('lastName').touched)" class="text-danger">
+                                {{ 'message@error@clients@create-client-modal@name-min-2' | MessageGenerator }}
+                            </div>
+                            <div *ngIf="form.get('lastName').hasError('minlength') && (form.get('lastName').dirty || form.get('lastName').touched)" class="text-danger">
+                                {{ 'message@error@clients@create-client-modal@lastname-max-50' | MessageGenerator }}
+                            </div>
+                            <div *ngIf="form.get('lastName').hasError('onlylatinAndGeorgian') && (form.get('lastName').dirty || form.get('lastName').touched)" class="text-danger">
+                                {{ 'message@error@clients@create-client-modal@onlylathinorgeorgian' | MessageGenerator }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="position-relative form-group">
+                            <label> სქესი</label>
+                            <select formControlName="sex" class="form-control">
+                                <option [ngValue]="null" disabled>აირჩიეთ სქესი</option>
+                                <option *ngFor="let s of sexData" [ngValue]="s.Id">
+                                    {{ s.Name }}
+                                </option>
+                            </select> 
+                            <div *ngIf="form.get('sex').hasError('required') && (form.get('sex').dirty || form.get('sex').touched)" class="text-danger">                              
+                              {{ 'message@error@clients@create-client-modal@select-sex' | MessageGenerator }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="position-relative form-group">
+                            <label>პირადი ნომერი</label>
+                            <input type="text" formControlName="personalId" class="form-control" maxlength="11"/>
+                            <div *ngIf="form.get('personalId').hasError('required') && (form.get('personalId').dirty || form.get('personalId').touched)" class="text-danger">
+                               გთხოვთ შეიყვანოთ პირადი ნომერი
+                            </div>
+                            <div *ngIf="form.get('personalId').hasError('onlyNumbers') && (form.get('personalId').dirty || form.get('personalId').touched)" class="text-danger">
+                                პირადი ნომერი უნდა შედგებოდეს მხოლოდ ციფრებისგან
+                            </div>
+                            <div *ngIf="(form.get('personalId').hasError('minlength') || form.get('personalId').hasError('maxlength')) && (form.get('personalId').dirty || form.get('personalId').touched)" class="text-danger">
+                                პირადი ნომერი უნდა შედგებოდეს 11 სიმბოლოსგან
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="position-relative form-group">
+                            <label >მობილური</label>
+                            <input type="text" formControlName="mobile" class="form-control" maxlength="9"/>
+                            <div *ngIf="form.get('mobile').hasError('required') && (form.get('mobile').dirty || form.get('mobile').touched)" class="text-danger">
+                                გთხოვთ შეიყვანოთ ტელეფონის ნომერი
+                            </div>
+                            <div *ngIf="form.get('mobile').hasError('startWith5Number') && (form.get('mobile').dirty || form.get('mobile').touched)" class="text-danger">
+                                ტელეფონის ნომერი უნდა იწყებოდეს ციფრი 5ით
+                            </div>
+                            <div *ngIf="form.get('mobile').hasError('onlyNumbers') && (form.get('mobile').dirty || form.get('personalId').touched)" class="text-danger">
+                                ტელეფონის ნომერი უნდა შედგებოდეს მხოლოდ ციფრებისგან
+                            </div> 
+                            <div *ngIf="(form.get('mobile').hasError('minlength') || form.get('mobile').hasError('maxlength')) && (form.get('mobile').dirty || form.get('mobile').touched)" class="text-danger">
+                                ტელეფონის ნომერი უნდა შედგებოდეს 9 სიმბოლოსგან
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="width: 77%; margin: 30px auto 30px;"/>
+
+                    <div class="col-md-12">
+                        <div class="position-relative form-group">
+                            <label >იურიდიული მისამართი</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label>ქვეყანა</label>
+                                        <input type="text" formControlName="legalAddressCountry" class="form-control" />
+                                        <div *ngIf="form.get('legalAddressCountry').hasError('required') && (form.get('legalAddressCountry').dirty || form.get('legalAddressCountry').touched)" class="text-danger">
+                                            გთხოვთ შეიყვანოთ ქვეყანა
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label>ქალაქი</label>
+                                        <input type="text" formControlName="legalAddressCity" class="form-control" />
+                                        <div *ngIf="form.get('legalAddressCity').hasError('required') && (form.get('legalAddressCity').dirty || form.get('legalAddressCity').touched)" class="text-danger">
+                                            გთხოვთ შეიყვანოთ ქალაქი
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label>მისამართი</label>
+                                        <input type="text" formControlName="legalAddressAddress" class="form-control"/>
+                                        <div *ngIf="form.get('legalAddressAddress').hasError('required') && (form.get('legalAddressAddress').dirty || form.get('legalAddressAddress').touched)" class="text-danger">
+                                            გთხოვთ შეიყვანოთ მისამართი
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="position-relative form-group">
+                            <label>ფაქტიური მისამართი</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label>ქვეყანა</label>
+                                        <input type="text" formControlName="actualAddressCountry" class="form-control"/>
+                                        <div *ngIf="form.get('actualAddressCountry').hasError('required') && (form.get('actualAddressCountry').dirty || form.get('actualAddressCountry').touched)" class="text-danger">
+                                            გთხოვთ შეიყვანოთ ქვეყანა
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label>ქალაქი</label>
+                                        <input type="text" formControlName="actualAddressCity" class="form-control"/>
+                                        <div *ngIf="form.get('actualAddressCity').hasError('required') && (form.get('actualAddressCity').dirty || form.get('actualAddressCity').touched)" class="text-danger">
+                                            გთხოვთ შეიყვანოთ ქალაქი
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="position-relative form-group">
+                                        <label>მისამართი</label>
+                                        <input type="text" formControlName="actualAddressAddress" class="form-control" />
+                                        <div *ngIf="form.get('actualAddressAddress').hasError('required') && (form.get('actualAddressAddress').dirty || form.get('actualAddressAddress').touched)" class="text-danger">
+                                            გთხოვთ შეიყვანოთ მისამარი
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>                
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="modal.close('Save click')">გაუქმება</button>
+                <button type="submit" class="btn btn-danger" [disabled]="!this.form.valid || clientCreateSuccessfullyStatus" *ngIf="!editMode">დამატება</button>
+                <button type="submit" class="btn btn-danger" [disabled]="!this.form.valid || clientCreateSuccessfullyStatus" *ngIf="editMode">რედაქტირება</button>
+            </div>
+        </form>
+    </ng-container>
+</ng-template>
+

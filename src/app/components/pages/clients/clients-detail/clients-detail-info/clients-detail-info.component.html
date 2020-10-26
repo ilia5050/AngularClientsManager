@@ -1,0 +1,107 @@
+<div class="main-card mb-3 card" *ngIf="client">
+    <div class="card-header">
+        <i class="pe-7s-info mr-3" style="font-size: 22px;"> </i>
+        <span class="color-primary"> დეტალური ინფორმაცია</span>
+
+        <div style="float: left;position: absolute;right: 20px;">
+            <button class="btn btn-danger mr-2" id="dropdownBasic1" (click)="addAccountModalOpenForEdit()">
+                <i class="pe-7s-note"> </i>
+                რედაქტირება
+            </button>
+            <button class="btn btn-danger" id="dropdownBasic1" (click)="openDeleteClientModal(deleteClientModal)">
+                <i class="pe-7s-delete-user"> </i>
+                წაშლა
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row mb-3">
+
+            <div class="col-md-12">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="assets/images/avatars/{{ client.Photo }}" style="float: left; border-radius: 50%;"/>
+                        <h5 style="float: left; margin: 15px; font-weight: 600;" class="color-primary"> {{ client.Name }} {{ client.LastName }} </h5>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col-md-6"><b>პირადი ნომერი</b></div>
+
+                            <div class="col-md-6">{{ client.PersonalId }}</div>
+
+                            <div class="col-md-6"><b>ტელეფონი</b></div>
+
+                            <div class="col-md-6">{{ client.Mobile }}</div>
+                        </div>
+                    </div> 
+                </div> 
+
+            </div>
+
+            <hr style="border-top: solid 1px #e2e2e2; width: 85%;">
+            
+            <div class="col-md-12">
+
+                <div class="row">
+                    <div class="col-md-6">   
+                        <div class="row">                     
+                            <div class="col-md-6"><b>ფაქტიური მისამართი</b></div>
+                            <div class="col-md-6">
+                                {{ client.ActualAddress.Address }}, {{ client.ActualAddress.City }}, {{ client.ActualAddress.Country }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">   
+                        <div class="row">                     
+                            <div class="col-md-6"><b>იურიდიული მისამართი</b></div>
+                            <div class="col-md-6">
+                                {{ client.LegalAddress.Address }}, {{ client.LegalAddress.City }}, {{ client.LegalAddress.Country }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        
+        
+    </div>
+
+</div>
+
+
+
+<ng-template #deleteClientModal let-modal>
+    <ng-container *ngIf="client">
+        <div class="modal-header">
+        <p class="modal-title d-flex" id="modal-basic-title">
+            <i class="pe-7s-close-circle mr-2" style="font-size: 21px;"> </i> 
+            კლიენტის წაშლა
+        </p>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">      
+            <div *ngIf="!deleteClientModalSuccessMessage" class="text-center m-3">ნამდვილად გსურთ კლიენტის წაშლა?</div>
+            <div *ngIf="deleteClientModalSuccessMessage" class="text-success text-center m-3">კლიენტი წაშლილია</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Save click')">გაუქმება</button>
+            <button type="button" class="btn btn-danger" (click)="deleteClientRequest()">დადასტურება</button>
+        </div>
+    </ng-container>
+</ng-template>
+
+
+
+
+<app-create-client-modal [openCreateClientModalSubject$]="openCreateClientModalSubject.asObservable()" [client]="client"></app-create-client-modal>

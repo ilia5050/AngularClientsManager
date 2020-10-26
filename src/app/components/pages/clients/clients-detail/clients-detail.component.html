@@ -1,0 +1,20 @@
+<div class="app-main__inner">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/clients" class="color-primary">კლიენტები</a></li> 
+            <li class="active breadcrumb-item" aria-current="page" *ngIf="client">{{ client.Name }} {{ client.LastName }}</li>
+        </ol>
+    </nav>  
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <app-clients-detail-info [client]="client"></app-clients-detail-info>
+        </div>
+        <div class="col-md-6">
+            <app-clients-detail-accounts [client]="client" [accounts]="accounts"></app-clients-detail-accounts>
+        </div>
+    </div>
+
+</div>

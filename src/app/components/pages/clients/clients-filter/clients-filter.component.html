@@ -1,0 +1,84 @@
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="main-card mb-3 card">
+            <div class="card-header">
+                <i class="pe-7s-filter mr-3" style="font-size: 22px;"> </i>
+                <span class="color-primary">ფილტრი</span>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="clientFilterform" (ngSubmit)="searchRequest()">
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="csName">სახელი</label>
+                                <input formControlName="firstName" id="csName" type="text" class="form-control">
+                                <div *ngIf="clientFilterform.get('firstName').hasError('minlength') && (clientFilterform.get('firstName').dirty || clientFilterform.get('firstName').touched)" class="text-danger">
+                                    სახელი უნდა იყოს მინიმუმ 2 სიმბოლო
+                                </div>
+                                <div *ngIf="clientFilterform.get('firstName').hasError('minlength') && (clientFilterform.get('firstName').dirty || clientFilterform.get('firstName').touched)" class="text-danger">
+                                    სახელი უნდა იყოს მაქსიმუმ 50 სიმბოლო
+                                </div>
+                                <div *ngIf="clientFilterform.get('firstName').hasError('onlylatinAndGeorgian') && (clientFilterform.get('firstName').dirty || clientFilterform.get('firstName').touched)" class="text-danger">
+                                    გთხოვთ, გამოიყენოთ მხოლოდ ლათინური ან მხოლოდ ქართული სიმბოლოები
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="csLastName">გვარი</label>
+                                <input formControlName="lastName" id="csLastName" type="text" class="form-control">
+                                <div *ngIf="clientFilterform.get('lastName').hasError('minlength') && (clientFilterform.get('lastName').dirty || clientFilterform.get('lastName').touched)" class="text-danger">
+                                    გვარი უნდა იყოს მინიმუმ 2 სიმბოლო
+                                </div>
+                                <div *ngIf="clientFilterform.get('lastName').hasError('minlength') && (clientFilterform.get('lastName').dirty || clientFilterform.get('lastName').touched)" class="text-danger">
+                                    გვარი უნდა იყოს მაქსიმუმ 50 სიმბოლო
+                                </div>
+                                <div *ngIf="clientFilterform.get('lastName').hasError('onlylatinAndGeorgian') && (clientFilterform.get('lastName').dirty || clientFilterform.get('lastName').touched)" class="text-danger">
+                                    გთხოვთ, გამოიყენოთ მხოლოდ ლათინური ან მხოლოდ ქართული სიმბოლოები
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="csPersonalId">პირადი ნომერი</label>
+                                <input formControlName="personalId" id="csPersonalId" type="text" class="form-control" maxlength="11">
+                                <div *ngIf="clientFilterform.get('personalId').hasError('onlyNumbers') && (clientFilterform.get('personalId').dirty || clientFilterform.get('personalId').touched)" class="text-danger">
+                                    პირადი ნომერი უნდა შედგებოდეს მხოლოდ ციფრებისგან
+                                </div>
+                                <div *ngIf="(clientFilterform.get('personalId').hasError('minlength') || clientFilterform.get('personalId').hasError('maxlength')) && (clientFilterform.get('personalId').dirty || clientFilterform.get('personalId').touched)" class="text-danger">
+                                    პირადი ნომერი უნდა შედგებოდეს 11 სიმბოლოსგან
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="csMobile">ტელეფონი</label>
+                                <input formControlName="mobile" id="csMobile" type="text" class="form-control" maxlength="9">
+                                <div *ngIf="clientFilterform.get('mobile').hasError('startWith5Number') && (clientFilterform.get('mobile').dirty || clientFilterform.get('mobile').touched)" class="text-danger">
+                                    ტელეფონის ნომერი უნდა იწყებოდეს ციფრი 5ით
+                                </div>
+                                <div *ngIf="clientFilterform.get('mobile').hasError('onlyNumbers') && (clientFilterform.get('mobile').dirty || clientFilterform.get('personalId').touched)" class="text-danger">
+                                    ტელეფონის ნომერი უნდა შედგებოდეს მხოლოდ ციფრებისგან
+                                </div> 
+                                <div *ngIf="(clientFilterform.get('mobile').hasError('minlength') || clientFilterform.get('mobile').hasError('maxlength')) && (clientFilterform.get('mobile').dirty || clientFilterform.get('mobile').touched)" class="text-danger">
+                                    ტელეფონის ნომერი უნდა შედგებოდეს 9 სიმბოლოსგან
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="mt-2 btn btn-danger pull-right" [disabled]="!this.clientFilterform.valid">ძებნა</button>
+                    <button class="mt-2 btn btn-light pull-right mr-2" (click)="clearFormData()">გასუფთავება</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

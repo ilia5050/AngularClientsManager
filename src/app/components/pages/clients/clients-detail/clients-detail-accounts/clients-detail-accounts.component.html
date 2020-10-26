@@ -1,0 +1,82 @@
+<div class="main-card mb-3 card">
+    <div class="card-header"> 
+        <i class="pe-7s-wallet mr-3" style="font-size: 22px;"> </i>
+        <span class="color-primary"> ანგარიშები </span>
+        <button class="btn btn-danger pull-right" style="position: absolute;right: 20px;" 
+            (click)="addAccountModalOpen(addAccountModal)">
+            <i class="pe-7s-plus"> </i> 
+            დამატება
+        </button>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6" *ngFor="let account of accounts">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">
+                        <i class="pe-7s-star" style="font-size: 20px; margin-right: 15px; cursor: pointer;"  data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" title="მონიშნეთ როგორც ფავორიტი"> </i>
+                        <span class="color-primary">{{ getAccountTypeWithTypeId(account.Type) }}</span>
+                        <div ngbDropdown style="position: absolute; right: 15px;">
+                            <button class="btn btn-danger btn-sm" id="dropdownBasic1" ngbDropdownToggle>
+                                <i class="pe-7s-angle-down"> </i>
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button ngbDropdownItem (click)="openCloseAccountModal(account.id, mymodal)">                                  
+                                    {{ (account.Status===1) ? 'ანგარიშის დახურვა' : 'ანგარიშის გააქტიურება' }}  
+                                </button>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="card-body">
+                        <i [ngClass]="{'pe-7s-wallet': account.Type==1, 'pe-7s-piggy': account.Type!=1}" style="font-size: 46px; opacity: .5; float: left;"></i>
+                        <span class="cd-account-amount">
+                            <div class="d-flex">
+                                <div *ngFor="let b of account.Balance" class="mr-2">
+                                    {{ b.Amount }} {{ getAccountCurrencySymbol(b.Currency) }}
+                                </div>
+                            </div>
+                            <div>
+                                <div *ngFor="let b of account.Balance" class="badge badge-pill badge-light cd-account-currency-badge" style="margin-right: 3px;">
+                                    {{ getAccountCurrencySymbol(b.Currency) }}
+                                </div>
+                            </div>
+                        </span>
+
+                        <span style="float: right;margin-top: 10px;" class="cd-account-status-{{ account.Status }}">
+                            {{ getAccountStausNameWithStatus(account.Status) }} 
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #mymodal let-modal>
+    <ng-container *ngIf="closeSelectedAccount">
+        <div class="modal-header">
+        <p class="modal-title d-flex" id="modal-basic-title">
+            <i class="pe-7s-close-circle mr-2" style="font-size: 21px;"> </i> 
+            {{ (closeSelectedAccount.Status===1) ? 'ანგარიშის დახურვა' : 'ანგარიშის გააქტიურება' }}  
+        </p>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">      
+        {{ (closeSelectedAccount.Status===1) ? 'ნამდვილად გსურთ ანგარიშის დახურვა?' : 'ნამდვილად გსურთ ანგარიშის გააქტიურება?' }}  
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Save click')">გაუქმება</button>
+        <button type="button" class="btn btn-danger" (click)="openCloseAccountRequest()">დადასტურება</button>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #addAccountModal let-modal>
+    <app-add-account-modal [modal]="modal" [client]="client" (parentFun)="parentFun()"></app-add-account-modal>
+</ng-template>

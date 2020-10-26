@@ -1,0 +1,615 @@
+{
+  "Clients": [
+    {
+      "id": 1,
+      "Name": "გიორგი",
+      "LastName": "ჭეიშვილი",
+      "Sex": "1",
+      "PersonalId": 23456789123,
+      "Mobile": 534567891,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 2"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ერისთავის ქუჩა 24"
+      },
+      "Photo": "2.jpg",
+      "Deleted": 0
+    },
+    {
+      "id": 2,
+      "Name": "ელენე",
+      "LastName": "გელენიძე",
+      "Sex": "2",
+      "PersonalId": 53456789123,
+      "Mobile": 574567897,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "5.jpg",
+      "Deleted": 1
+    },
+    {
+      "id": 3,
+      "Name": "გიორგი",
+      "LastName": "ჭეიშვილი",
+      "Sex": "1",
+      "PersonalId": 23456789123,
+      "Mobile": 534567891,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 2"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ერისთავის ქუჩა 24"
+      },
+      "Photo": "1.jpg",
+      "Deleted": 0
+    },
+    {
+      "id": 4,
+      "Name": "ელენე",
+      "LastName": "გელენიძე",
+      "Sex": "2",
+      "PersonalId": 53456789123,
+      "Mobile": 588888888,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "3.jpg",
+      "Deleted": 0
+    },
+    {
+      "id": 5,
+      "Name": "გიორგი",
+      "LastName": "ჭეიშვილი",
+      "Sex": "1",
+      "PersonalId": 23456789123,
+      "Mobile": 534567891,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 2"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ერისთავის ქუჩა 24"
+      },
+      "Photo": "2.jpg",
+      "Deleted": 1
+    },
+    {
+      "id": 6,
+      "Name": "ელენე",
+      "LastName": "გელენიძე",
+      "Sex": "2",
+      "PersonalId": 53456789123,
+      "Mobile": 574567897,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "5.jpg",
+      "Deleted": 0
+    },
+    {
+      "id": 7,
+      "Name": "გიორგი",
+      "LastName": "ჭეიშვილი",
+      "Sex": "1",
+      "PersonalId": 23456789123,
+      "Mobile": 534567891,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 2"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ერისთავის ქუჩა 24"
+      },
+      "Photo": "1.jpg",
+      "Deleted": 1
+    },
+    {
+      "id": 8,
+      "Name": "ელენე",
+      "LastName": "გელენიძე",
+      "Sex": "2",
+      "PersonalId": 53456789123,
+      "Mobile": 574567897,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "3.jpg",
+      "Deleted": 0
+    },
+    {
+      "id": 9,
+      "Name": "გიორგი",
+      "LastName": "ჭეიშვილი",
+      "Sex": "1",
+      "PersonalId": 23456789123,
+      "Mobile": 534567891,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 2"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ერისთავის ქუჩა 24"
+      },
+      "Photo": "2.jpg",
+      "Deleted": 1
+    },
+    {
+      "id": 10,
+      "Name": "ელენე",
+      "LastName": "გელენიძე",
+      "Sex": "2",
+      "PersonalId": 53456789123,
+      "Mobile": 574567897,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "5.jpg",
+      "Deleted": 1
+    },
+    {
+      "id": 11,
+      "Name": "გიორგი",
+      "LastName": "ჭეიშვილი",
+      "Sex": "1",
+      "PersonalId": 23456789123,
+      "Mobile": 534567891,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 2"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ერისთავის ქუჩა 24"
+      },
+      "Photo": "2.jpg",
+      "Deleted": 0
+    },
+    {
+      "id": 12,
+      "Name": "ელენე",
+      "LastName": "გელენიძე",
+      "Sex": "2",
+      "PersonalId": 53456789123,
+      "Mobile": 574567897,
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "1.jpg",
+      "Deleted": 0
+    },
+    {
+      "Name": "ილია",
+      "LastName": "მაჭავარიანი",
+      "Sex": 1,
+      "PersonalId": "11111111111",
+      "Mobile": "522222222",
+      "LegalAddress": {
+        "Country": "333333",
+        "City": "444444",
+        "Address": "555555"
+      },
+      "ActualAddress": {
+        "Country": "66666666",
+        "City": "77777777",
+        "Address": "8888888888"
+      },
+      "Photo": "9.jpg",
+      "id": 13,
+      "Deleted": 0
+    },
+    {
+      "id": 14,
+      "Name": "სალომე",
+      "LastName": "მელიქიშვილი",
+      "Sex": 1,
+      "PersonalId": "33333333333",
+      "Mobile": "544444444",
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "5.jpg",
+      "Deleted": 0
+    },
+    {
+      "Name": "ნიცა",
+      "LastName": "მელაძე",
+      "Sex": 2,
+      "PersonalId": "22222222222",
+      "Mobile": "544444444",
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "10.jpg",
+      "Deleted": 0,
+      "id": 15
+    },
+    {
+      "Name": "ანუკი",
+      "LastName": "ჭელიძე",
+      "Sex": 1,
+      "PersonalId": "24242343453",
+      "Mobile": "556756757",
+      "LegalAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჭავჭავაძის ქუჩა 17"
+      },
+      "ActualAddress": {
+        "Country": "საქართველო",
+        "City": "თბილისი",
+        "Address": "ჯიქიას ქუჩა 16"
+      },
+      "Photo": "1.jpg",
+      "Deleted": 0,
+      "id": 16
+    }
+  ],
+  "Accounts": [
+    {
+      "id": 1,
+      "ClientId": 1,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 324.3
+        },
+        {
+          "Currency": 4,
+          "Amount": 21.7
+        }
+      ],
+      "Status": 1
+    },
+    {
+      "id": 2,
+      "ClientId": 1,
+      "Type": 2,
+      "Currency": 3,
+      "Balance": [
+        {
+          "Currency": 3,
+          "Amount": 1421.5
+        }
+      ],
+      "Status": 2
+    },
+    {
+      "id": 3,
+      "ClientId": 2,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 2,
+          "Amount": 2125.9
+        }
+      ],
+      "Status": 1
+    },
+    {
+      "ClientId": 1,
+      "Type": 3,
+      "Balance": [
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        }
+      ],
+      "Status": 1,
+      "id": 4
+    },
+    {
+      "ClientId": 1,
+      "Type": 2,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        }
+      ],
+      "Status": 1,
+      "id": 5
+    },
+    {
+      "ClientId": 1,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        },
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        },
+        {
+          "Currency": 4,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 6
+    },
+    {
+      "ClientId": 1,
+      "Type": 3,
+      "Balance": [
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 4,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 7
+    },
+    {
+      "ClientId": 1,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        },
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 8
+    },
+    {
+      "ClientId": 1,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        }
+      ],
+      "Status": 1,
+      "id": 9
+    },
+    {
+      "ClientId": 1,
+      "Type": 2,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        },
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        },
+        {
+          "Currency": 4,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 10
+    },
+    {
+      "ClientId": 5,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 3,
+          "Amount": 0
+        },
+        {
+          "Currency": 4,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 11
+    },
+    {
+      "ClientId": 12,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 12
+    },
+    {
+      "ClientId": 5,
+      "Type": 3,
+      "Balance": [
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 13
+    },
+    {
+      "ClientId": 16,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 14
+    },
+    {
+      "ClientId": 16,
+      "Type": 3,
+      "Balance": [
+        {
+          "Currency": 3,
+          "Amount": 23.4
+        },
+        {
+          "Currency": 4,
+          "Amount": 400.5
+        }
+      ],
+      "Status": 1,
+      "id": 15
+    },
+    {
+      "ClientId": 15,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        },
+        {
+          "Currency": 2,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 16
+    },
+    {
+      "ClientId": 15,
+      "Type": 2,
+      "Balance": [
+        {
+          "Currency": 4,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 17
+    },
+    {
+      "ClientId": 15,
+      "Type": 1,
+      "Balance": [
+        {
+          "Currency": 1,
+          "Amount": 0
+        },
+        {
+          "Currency": 2,
+          "Amount": 0
+        },
+        {
+          "Currency": 3,
+          "Amount": 0
+        }
+      ],
+      "Status": 2,
+      "id": 18
+    }
+  ]
+}

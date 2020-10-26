@@ -1,0 +1,21 @@
+    <div class="app-main__inner">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <!-- <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Library</a></li> -->
+                <li class="active breadcrumb-item" aria-current="page">კლიენტები</li>
+            </ol>
+        </nav>          
+        
+
+        <app-clients-info-widget [clients]="clients" [accounts]="accounts"></app-clients-info-widget>
+
+
+        <app-clients-filter></app-clients-filter>
+
+
+        <app-clients-results [clients]="clients"></app-clients-results>
+
+        
+    </div>  

@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-midnight-bloom widget-content-main">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading mb-1">კლიენტების რაოდენობა</div>
+                    <div class="widget-subheading">კლიენტების სრული რაოდენობა სისტემაში</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white">
+                        <span *ngIf="clients">{{ clients.length }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-arielle-smile widget-content-main">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading mb-1">ანგარიშების რაოდენობა</div>
+                    <div class="widget-subheading">ანგარიშების სრული რაოდენობა</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white" *ngIf="accounts"><span>{{ accounts.length }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-grow-early widget-content-main">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading mb-1">თანხა ანგარიშებზე</div>
+                    <div class="widget-subheading">სრული თანხა ყველა ვალუტაში</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white">
+                        <span _ngcontent-nce-c18="">
+                        <div class="text-center">₾ {{ accountsAmount['GEL'] }}</div> 
+                        <span class="d-flex text-center" style="font-size: 14px;"> 
+                            $ {{ accountsAmount['USD'] }} € {{ accountsAmount['EUR'] }} ₽ {{ accountsAmount['RUB'] }}
+                        </span>
+                        </span>                                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">                
+                <i class="pe-7s-menu mr-3" style="font-size: 22px;"> </i>
+                <span class="color-primary"> შედეგი</span>
+
+                <button class="btn btn-danger pull-right" style="position: absolute;right: 20px;" 
+                    (click)="addClientModalOpen()">
+                    <i class="pe-7s-plus"> </i> 
+                        დამატება
+                </button>
+            </div>
+            <div class="table-responsive">
+
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-center cursor-pointer" style="width: 120px;" (click)="sortById()">
+                            # <i  [ngClass]="{'pe-7s-angle-down': !pagination.isSortedId, 'pe-7s-angle-up': pagination.isSortedId }"> </i>
+                        </th>
+                        <th>სახელი</th>
+                        <th class="text-center">პირადი ნომერი</th>
+                        <th class="text-center">ტელეფონი</th>
+                        <th class="text-center">ქმედება</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let client of clients">
+                            <td class="text-center text-muted">#{{ client.id }}</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="50" class="rounded-circle" src="assets/images/avatars/{{ client.Photo }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">{{ client.Name }} {{ client.LastName }}</div>
+                                            <div class="widget-subheading opacity-7">
+                                                <span>{{ client.ActualAddress.Address }}, {{ client.ActualAddress.City }}, {{ client.ActualAddress.Country }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">{{ client.PersonalId }}</td>
+                            <td class="text-center">
+                                {{ client.Mobile }}
+                            </td>
+                            <td class="text-center">
+                                <button type="button" id="PopoverCustomT-1" class="btn btn-danger btn" routerLink="/client/{{client.id}}">დეტალურად </button>
+                            </td>
+                        </tr>    
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3 mr-3">
+                <nav class="pull-right" aria-label="Page navigation example">
+                    <ul class="pagination">
+
+                        <li class="page-item" *ngFor="let p of [].constructor(pagination.pages); let i = index" [hidden]="i==0" [ngClass]="{ 'active': i===pagination.page }">
+                            <a (click)="pageChange(i)" class="page-link">{{ i }}</a>
+                        </li>
+                        
+                        <!-- <li class="page-item"><a href="javascript:void(0);" class="page-link" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                        <li class="page-item"><a href="javascript:void(0);" class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li> -->
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-create-client-modal [openCreateClientModalSubject$]="openCreateClientModalSubject.asObservable()"></app-create-client-modal>

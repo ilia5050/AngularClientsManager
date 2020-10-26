@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="addAccountRequest()">
+  <div class="modal-header">
+    <p class="modal-title d-flex" id="modal-basic-title">
+      <i class="pe-7s-plus mr-2" style="font-size: 21px;"> </i> 
+      ანგარიშის დამატება
+    </p>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="row pl-2 pr-2">
+        <div class="col-md-6">
+            <div class="position-relative form-group">
+                <label for="exampleEmail11" class="">ტიპი</label>
+                <select formControlName="type" class="form-control">
+                    <option [ngValue]="null" disabled>აირჩიეთ ანგარიშის ტიპი</option>
+                    <option *ngFor="let t of accountTypes" [ngValue]="t.Id">
+                     {{ t.Name }}
+                    </option>
+                </select> 
+                <div *ngIf="form.get('type').hasError('required') && (form.get('type').dirty || form.get('type').touched)" class="text-danger">
+                  {{ 'message@error@clients@clients-detail@add-account-modal@type-is-required' | MessageGenerator }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="position-relative form-group">
+                <label for="exampleEmail11" class="">ვალუტა</label>
+                <select multiple="" formControlName="currency" class="form-control">
+                  <option [ngValue]="null" disabled>აირჩიეთ ვალუტა (ვალუტები)</option>
+                  <option *ngFor="let c of accountCurrencies" [ngValue]="c.Id">
+                    {{ c.Name }}
+                  </option>
+                </select>
+                <div *ngIf="form.get('currency').hasError('required') && (form.get('currency').dirty || form.get('currency').touched)" class="text-danger">                    
+                    {{ 'message@error@clients@clients-detail@add-account-modal@currency-is-required' | MessageGenerator }}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('cancel click')">გაუქმება</button>
+    <button type="submit" class="btn btn-danger" [disabled]="!form.valid">დამატება</button>
+  </div>
+</form>
