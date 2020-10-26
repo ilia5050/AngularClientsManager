@@ -32,7 +32,6 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
   private subscribers: any = {};
 
   constructor(private cd: ChangeDetectorRef, private modalService: NgbModal, private readonly fb: FormBuilder, private clientsService: ClientsService) {
-
     this.form = this.fb.group({
       firstName: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(50), onlylatinAndGeorgianValidator]],      
       lastName: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(50), onlylatinAndGeorgianValidator]],

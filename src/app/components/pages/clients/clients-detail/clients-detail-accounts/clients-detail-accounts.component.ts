@@ -1,17 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate, keyframes,
-  AnimationEvent
-} from '@angular/animations';
 import { AccountCurrencyEnum } from 'src/app/models/account-currency.enum';
 import { AccountStatusEnum } from 'src/app/models/account-status.enum';
 import { AccountTypeEnum } from 'src/app/models/account-type.enum';
 import { AccountModel } from 'src/app/models/account.model';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { AccountsService } from 'src/app/services/accounts.service';
 
 @Component({
@@ -21,26 +13,20 @@ import { AccountsService } from 'src/app/services/accounts.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClientsDetailAccountsComponent implements OnInit {
-
   @Input()
   client: AccountModel;
-
   @Input()
   accounts: AccountModel[];
-
   closeSelectedAccount: AccountModel;
-
   private subscribers: any = {};
 
   constructor(private modalService: NgbModal, private accountsService: AccountsService, private cd: ChangeDetectorRef) { }
   
   ngOnInit(): void {
-
     this.subscribers.addNewAccount = this.accountsService.addNewAccount$.subscribe(() => {
       this.addNewAccountFromSubsciber();
       this.cd.detectChanges();
     });
-
   }
 
   ngOnDestroy() {
@@ -104,14 +90,10 @@ export class ClientsDetailAccountsComponent implements OnInit {
   }
 
   openCloseAccountModal(accountId: number, content: any): void {
-
     this.closeSelectedAccount = this.accounts.find(a => a.id === accountId);
-
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      //this.closeResult = `Closed with: ${result}`;
       this.closeSelectedAccount = null;
     }, (reason) => {
-      //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       this.closeSelectedAccount = null;
     });
   }
@@ -127,9 +109,7 @@ export class ClientsDetailAccountsComponent implements OnInit {
 
   addAccountModalOpen(content: any): void {
     this.modalService.open(content, { size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      // this.closeSelectedAccount = null;
     }, (reason) => {
-      // this.closeSelectedAccount = null;
     });
   }
 
@@ -141,7 +121,7 @@ export class ClientsDetailAccountsComponent implements OnInit {
   }
 
   parentFun() {
-    alert('parent component function.');
+    alert('');
   }
 
 

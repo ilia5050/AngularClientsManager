@@ -11,20 +11,15 @@ import { ClientModel } from 'src/app/models/client.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClientsComponent implements OnInit {
-
   clients: ClientModel[];
-
   accounts: AccountModel[];
 
   constructor(private activatedRoute: ActivatedRoute, private cd: ChangeDetectorRef) { 
   }
 
   ngOnInit(): void {
-
     this.clients = this.activatedRoute.snapshot.data['data'];
-
     this.accounts = this.activatedRoute.snapshot.data['accounts'];
-
   }
   
 

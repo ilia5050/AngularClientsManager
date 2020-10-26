@@ -15,31 +15,25 @@ import { AccountsService } from 'src/app/services/accounts.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddAccountModalComponent implements OnInit {
-
   @Input()
   modal: any;
-
   @Input()
   client: ClientModel;
-
   @Output("parentFun") 
   parentFun: EventEmitter<any> = new EventEmitter();
-
   form: FormGroup;
-
   accountTypes = [    
     { Name: 'მიმდინარე', Id: AccountTypeEnum.Current },
     { Name: 'დაგროვებითი', Id: AccountTypeEnum.Accumulative },
     { Name: 'შემნახველი', Id: AccountTypeEnum.Saving },
   ];
-
   accountCurrencies = [    
     { Name: 'GEL', Id: AccountCurrencyEnum.GEL },
     { Name: 'USD', Id: AccountCurrencyEnum.USD },
     { Name: 'EUR', Id: AccountCurrencyEnum.EUR },
     { Name: 'RUB', Id: AccountCurrencyEnum.RUB },
   ];
-  
+
   constructor(private readonly fb: FormBuilder, private modalService: NgbModal, private accountsService: AccountsService, private cd: ChangeDetectorRef) { 
     this.form = this.fb.group({
       type: [null, [Validators.required]],      
@@ -53,11 +47,8 @@ export class AddAccountModalComponent implements OnInit {
   addAccountRequest(): void {
 
     if (this.form.valid) {
-
-      this.modalService.dismissAll();
-      
+      this.modalService.dismissAll();      
       const newAccount = this.generateNewAccountByFormGroup();
-
       this.accountsService.addNewAccount(newAccount).subscribe(() => {
         this.parentFun.emit();
         this.accountsService.addNewAccountSubjNext();

@@ -54,16 +54,11 @@ export class ClientsFilterComponent implements OnInit {
 
   searchRequest(): void {
 
-    if (this.clientFilterform.valid) {
-      
+    if (this.clientFilterform.valid) {      
       const searchData = this.generateSearchData(this.clientFilterform.getRawValue());
-
       this.clientsService.searchClient(searchData).subscribe(data => {
-
         this.clientsService.showResultAfterFilter({ SearchData: searchData, Results: data });
-
         this.cd.detectChanges();        
-
       }, err => {
         console.log(err)
       });
@@ -94,7 +89,6 @@ export class ClientsFilterComponent implements OnInit {
   }
 
 }
-
 
 function onlylatinAndGeorgianValidator(control: FormControl) { 
   const inputtxt = control.value;

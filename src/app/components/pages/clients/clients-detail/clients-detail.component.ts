@@ -17,7 +17,6 @@ export class ClientsDetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-
     this.client = this.activatedRoute.snapshot.data['data'][0];
     this.accounts = this.activatedRoute.snapshot.data['accounts'];
   }

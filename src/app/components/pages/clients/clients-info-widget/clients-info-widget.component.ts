@@ -9,13 +9,10 @@ import { ClientModel } from 'src/app/models/client.model';
   styleUrls: ['./clients-info-widget.component.css']
 })
 export class ClientsInfoWidgetComponent implements OnInit {
-
   @Input()
   clients: ClientModel[];
-
   @Input()
   accounts: AccountModel[];
-
   accountsAmount =  {
     'GEL': 0,
     'USD': 0,
@@ -26,7 +23,6 @@ export class ClientsInfoWidgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
     this.generateAccountsAmount();
   }
 

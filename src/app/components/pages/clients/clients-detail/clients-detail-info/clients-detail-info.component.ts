@@ -10,14 +10,10 @@ import { ClientsService } from 'src/app/services/clients.service';
   styleUrls: ['./clients-detail-info.component.css'],
 })
 export class ClientsDetailInfoComponent implements OnInit {
-
   @Input()
   client: ClientModel;
-
   openCreateClientModalSubject: Subject<string> = new Subject<string>();
-
   deleteClientModalSuccessMessage = false;
-
   constructor(private modalService: NgbModal, private clientsService: ClientsService) { }
 
   ngOnInit(): void {

@@ -12,12 +12,9 @@ import { ClientsService } from 'src/app/services/clients.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClientsResultsComponent implements OnInit {
-
   @Input()
   clients: ClientModel[];
-
   form: FormGroup;
-
   pagination = {
     page: 1,
     pages: 0,
@@ -26,11 +23,8 @@ export class ClientsResultsComponent implements OnInit {
     isSortedId: false,
     searchData: ''
   }
-
   sessionStorageData: { pagination: any, clients: ClientModel[] } = { pagination: null, clients: []}
-
   openCreateClientModalSubject: Subject<void> = new Subject<void>();
-
   private subscribers: any = {};
 
   constructor(private readonly fb: FormBuilder, private clientsService: ClientsService, private cd: ChangeDetectorRef) { 
@@ -41,11 +35,8 @@ export class ClientsResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {   
-
     this.generatePagination();
-
     this.recoverSessionStorageData();
-
     this.subscribers.showResultAfterFilter = this.clientsService.showResultAfterFilter$.subscribe(data => {
       this.showResultAfterFilterFromSubsciber(data);
       this.cd.detectChanges();
@@ -86,22 +77,15 @@ export class ClientsResultsComponent implements OnInit {
   }
 
   generatePagination(): void {
-
     this.pagination.allDataCount = this.clients.length;
-
     this.pagination.pages = parseInt(String(this.pagination.allDataCount / this.pagination.limit))+2;
-
     this.pageChange(this.pagination.page);
   }
 
-  pageChange(page: number): void {
-    
-    this.pagination.page = page;
-    
+  pageChange(page: number): void {    
+    this.pagination.page = page;    
     this.clientsService.getClients(page, this.pagination.isSortedId, this.pagination.limit, this.pagination.searchData).subscribe(data => {
-
       this.clients = data;
-
       this.cd.detectChanges();
     }); 
   }
