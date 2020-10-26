@@ -16,27 +16,19 @@ import { ClientsService } from 'src/app/services/clients.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateClientModalComponent implements OnInit, OnDestroy {
-
   @Input()
   client: ClientModel;
-
   @Input() 
   openCreateClientModalSubject$: Observable<string>;
-
   @ViewChild('createClientmodal')
   private createClientmodal: any;
-
   form: FormGroup;
-
   editMode = false;
-
   sexData = [ 
     { Name: 'კაცი', Id: 1 },
     { Name: 'ქალი', Id: 2 }
   ];
-
   clientCreateSuccessfullyStatus=  false;
-
   private subscribers: any = {};
 
   constructor(private cd: ChangeDetectorRef, private modalService: NgbModal, private readonly fb: FormBuilder, private clientsService: ClientsService) {
@@ -59,19 +51,13 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.subscribers.openModal = this.openCreateClientModalSubject$.subscribe(string => {
-
       if (string === 'edit') {
-
         this.recoverFormByClientForEditMode();
-
-        this.editMode = true;
-  
+        this.editMode = true;  
       } else {
         this.editMode = false;
       }
-
       this.openCreateClientModalFromSubscribe();
-
       this.cd.detectChanges();
     });
   }
@@ -89,30 +75,24 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
   }
 
   recoverFormByClientForEditMode() {
-
     this.form.controls['firstName'].setValue(this.client.Name);
     this.form.controls['lastName'].setValue(this.client.LastName);
     this.form.controls['sex'].setValue(this.client.Sex);
     this.form.controls['personalId'].setValue(this.client.PersonalId);
     this.form.controls['mobile'].setValue(this.client.Mobile);
-
     this.form.controls['legalAddressCountry'].setValue(this.client.LegalAddress.Country);
     this.form.controls['legalAddressCity'].setValue(this.client.LegalAddress.City);
     this.form.controls['legalAddressAddress'].setValue(this.client.LegalAddress.Address);
-
     this.form.controls['legalAddressCountry'].setValue(this.client.LegalAddress.Country);
     this.form.controls['legalAddressCity'].setValue(this.client.LegalAddress.City);
     this.form.controls['legalAddressAddress'].setValue(this.client.LegalAddress.Address);
-
     this.form.controls['actualAddressCountry'].setValue(this.client.ActualAddress.Country);
     this.form.controls['actualAddressCity'].setValue(this.client.ActualAddress.City);
     this.form.controls['actualAddressAddress'].setValue(this.client.ActualAddress.Address);
   }
 
   openCreateClientModalFromSubscribe(): void {
-
     this.clientCreateSuccessfullyStatus = false;
-
     this.modalService.open(this.createClientmodal, { size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.clientCreateSuccessfullyStatus = false;
     }, (reason) => {
@@ -120,18 +100,12 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
     });
   }
 
-  addClientRequest(): void {
-    
-    if (this.form.valid) {
-      
+  addClientRequest(): void {    
+    if (this.form.valid) {      
       const newClient = this.generateNewClientByFormGroup();
-
       this.clientsService.addNewClient(newClient).subscribe(() => {
-
         this.clientCreateSuccessfullyStatus = true;
-
         this.form.reset();
-
         this.cd.detectChanges();
       }, err => {
         console.log(err)
@@ -142,17 +116,11 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
   }
 
   editClientRequest(): void {
-
-    if (this.form.valid) {
-      
+    if (this.form.valid) {      
       const newClient = this.generateNewClientByFormGroup();
-
       this.clientsService.updateClient(newClient).subscribe(() => {
-
         this.clientCreateSuccessfullyStatus = true;
-
         this.form.reset();
-
         this.cd.detectChanges();
       }, err => {
         console.log(err)
@@ -162,10 +130,8 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  generateNewClientByFormGroup(): ClientModel{
-    
+  generateNewClientByFormGroup(): ClientModel{    
     const client = new ClientModel();
-
     client.Name = this.form.get('firstName').value;
     client.LastName = this.form.get('lastName').value;
     client.Sex = this.form.get('sex').value;
@@ -174,27 +140,21 @@ export class CreateClientModalComponent implements OnInit, OnDestroy {
     client.Name = this.form.get('firstName').value;
     client.Name = this.form.get('firstName').value;
     client.Name = this.form.get('firstName').value; 
-
     client.LegalAddress = new ClientLegalAddressModel(); 
     client.LegalAddress.Country = this.form.get('legalAddressCountry').value; 
     client.LegalAddress.City = this.form.get('legalAddressCity').value; 
     client.LegalAddress.Address = this.form.get('legalAddressAddress').value; 
-
     client.ActualAddress = new ClientActualAddressModel();
     client.ActualAddress.Country = this.form.get('actualAddressCountry').value; 
     client.ActualAddress.City = this.form.get('actualAddressCity').value; 
     client.ActualAddress.Address = this.form.get('actualAddressAddress').value; 
-
     client.Photo = (client.Sex === ClientSexEnum.Male) ? '9.jpg' : '10.jpg';
     client.Deleted = 0;
     if (this.editMode) {
       client.id = this.client.id;
     }
-
     return client;
   }
-
-
 }
 
 function onlylatinAndGeorgianValidator(control: FormControl) { 
